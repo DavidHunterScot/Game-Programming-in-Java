@@ -38,17 +38,19 @@ public class Screen
 	{
 		for ( int y = 0; y < height; y++ )
 		{
-			int yy = y + yOffset;
+			int yp = y + yOffset;
 			
-			// if ( yy < 0 || yy >= height ) break;
+			if ( yp < 0 || yp >= height )
+				continue;
 			
 			for ( int x = 0; x < width; x++ )
 			{
-				int xx = x + xOffset;
+				int xp = x + xOffset;
 				
-				// if ( xx < 0 || xx >= width ) break;
+				if ( xp < 0 || xp >= width )
+					continue;
 				
-				pixels[ x + y * width ] = Sprite.grass.pixels[ ( x & 15 ) + ( y & 15 ) * Sprite.grass.SIZE ];
+				pixels[ xp + yp * width ] = Sprite.grass.pixels[ ( x & 15 ) + ( y & 15 ) * Sprite.grass.SIZE ];
 			}
 		}
 	}
