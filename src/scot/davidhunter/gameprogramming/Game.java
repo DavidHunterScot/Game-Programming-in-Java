@@ -1,7 +1,6 @@
 package scot.davidhunter.gameprogramming;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -83,10 +82,16 @@ public class Game extends Canvas implements Runnable
 			return;
 		}
 		
+		screen.render();
+		
+		for ( int i = 0; i < pixels.length; i++ )
+		{
+			pixels[ i ] = screen.pixels[ i ];
+		}
+		
 		Graphics g = bs.getDrawGraphics();
 		
-		g.setColor( Color.BLACK );
-		g.fillRect( 0, 0, getWidth(), getHeight() );
+		g.drawImage( image, 0, 0, getWidth(), getHeight(), null );
 		
 		g.dispose();
 		bs.show();
