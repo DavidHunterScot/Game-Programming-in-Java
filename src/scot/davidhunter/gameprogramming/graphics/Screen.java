@@ -5,7 +5,7 @@ public class Screen
 	private int width, height;
 	public int[] pixels;
 	
-	int xTime = 0, yTime = 50;
+	int xTime = 100, yTime = 50;
 	int counter = 0;
 	
 	public Screen( int width, int height )
@@ -27,18 +27,18 @@ public class Screen
 	{
 		counter++;
 		
-		if ( counter % 10 == 0 )
-			xTime++;
-		if ( counter % 80 == 0 )
-			yTime++;
+		if ( counter % 100 == 0 )
+			xTime--;
+		if ( counter % 100 == 0 )
+			yTime--;
 		
 		for ( int y = 0; y < height; y++ )
 		{
-			if ( yTime >= height )
+			if ( yTime < 0 || yTime >= height )
 				break;
 			for ( int x = 0; x < width; x++ )
 			{
-				if ( xTime >= width )
+				if ( xTime < 0 || xTime >= width )
 					break;
 				pixels[ xTime + yTime * width ] = 0xff00ff;
 			}
