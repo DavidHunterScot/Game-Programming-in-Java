@@ -41,6 +41,7 @@ public abstract class Mob extends Entity
 	
 	protected void shoot( int x, int y, double dir )
 	{
+		dir *= 180 / Math.PI;
 		System.out.println( "Angle: " + dir );
 	}
 	

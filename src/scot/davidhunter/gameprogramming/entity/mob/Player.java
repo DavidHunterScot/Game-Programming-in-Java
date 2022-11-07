@@ -1,5 +1,6 @@
 package scot.davidhunter.gameprogramming.entity.mob;
 
+import scot.davidhunter.gameprogramming.Game;
 import scot.davidhunter.gameprogramming.graphics.Screen;
 import scot.davidhunter.gameprogramming.graphics.Sprite;
 import scot.davidhunter.gameprogramming.input.Keyboard;
@@ -60,8 +61,8 @@ public class Player extends Mob
 	{
 		if ( Mouse.getButton() == 1 )
 		{
-			double dx = Mouse.getX() - 300 / 2;
-			double dy = Mouse.getY() - 168 / 2;
+			double dx = Mouse.getX() - Game.getWindowWidth() / 2;
+			double dy = Mouse.getY() - Game.getWindowHeight() / 2;
 			double dir = Math.atan2( dy, dx );
 			
 			shoot( x, y, dir );
