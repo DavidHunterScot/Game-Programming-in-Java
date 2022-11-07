@@ -1,5 +1,7 @@
 package scot.davidhunter.gameprogramming.entity.mob;
 
+import scot.davidhunter.gameprogramming.graphics.Screen;
+import scot.davidhunter.gameprogramming.graphics.Sprite;
 import scot.davidhunter.gameprogramming.input.Keyboard;
 
 public class Player extends Mob
@@ -35,8 +37,8 @@ public class Player extends Mob
 			move( xa, ya );
 	}
 	
-	public void render()
+	public void render( Screen screen )
 	{
-		
+		screen.renderPlayer( x, y, Sprite.player0 );
 	}
 }
