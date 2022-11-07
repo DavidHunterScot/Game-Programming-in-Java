@@ -1,6 +1,11 @@
 package scot.davidhunter.gameprogramming.entity.mob;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import scot.davidhunter.gameprogramming.entity.Entity;
+import scot.davidhunter.gameprogramming.entity.projectile.Projectile;
+import scot.davidhunter.gameprogramming.entity.projectile.WizardProjectile;
 import scot.davidhunter.gameprogramming.graphics.Sprite;
 
 public abstract class Mob extends Entity
@@ -8,6 +13,9 @@ public abstract class Mob extends Entity
 	protected Sprite sprite;
 	protected int dir = 0;
 	protected boolean moving = false;
+	protected boolean walking = false;
+	
+	protected List<Projectile> projectiles = new ArrayList<Projectile>();
 	
 	public void move( int xa, int ya )
 	{
@@ -41,8 +49,11 @@ public abstract class Mob extends Entity
 	
 	protected void shoot( int x, int y, double dir )
 	{
-		dir *= 180 / Math.PI;
-		System.out.println( "Angle: " + dir );
+		// dir *= 180 / Math.PI;
+		
+		Projectile p = new WizardProjectile( x, y, dir );
+		projectiles.add( p );
+		level.add( p );
 	}
 	
 	private boolean collision( int xa, int ya )
