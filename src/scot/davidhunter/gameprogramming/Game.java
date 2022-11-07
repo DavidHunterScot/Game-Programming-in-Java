@@ -15,7 +15,6 @@ import scot.davidhunter.gameprogramming.entity.mob.Player;
 import scot.davidhunter.gameprogramming.graphics.Screen;
 import scot.davidhunter.gameprogramming.input.Keyboard;
 import scot.davidhunter.gameprogramming.level.Level;
-import scot.davidhunter.gameprogramming.level.SpawnLevel;
 
 public class Game extends Canvas implements Runnable
 {
@@ -46,7 +45,7 @@ public class Game extends Canvas implements Runnable
 		screen = new Screen( width, height );
 		frame = new JFrame();
 		key = new Keyboard();
-		level = new SpawnLevel( "/textures/levels/level.png" );
+		level = Level.spawn;
 		player = new Player( 6 * 16, 4 * 16, key );
 		
 		addKeyListener( key );
