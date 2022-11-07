@@ -20,14 +20,19 @@ public class Player extends Mob
 	
 	public void update()
 	{
+		int xa = 0, ya = 0;
+		
 		if ( input.up )
-			y--;
+			ya--;
 		if ( input.down )
-			y++;
+			ya++;
 		if ( input.left )
-			x--;
+			xa--;
 		if ( input.right )
-			x++;
+			xa++;
+		
+		if ( xa != 0 || ya != 0 )
+			move( xa, ya );
 	}
 	
 	public void render()
