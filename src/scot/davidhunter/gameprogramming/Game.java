@@ -15,6 +15,7 @@ import scot.davidhunter.gameprogramming.entity.mob.Player;
 import scot.davidhunter.gameprogramming.graphics.Screen;
 import scot.davidhunter.gameprogramming.input.Keyboard;
 import scot.davidhunter.gameprogramming.level.Level;
+import scot.davidhunter.gameprogramming.level.TileCoordinate;
 
 public class Game extends Canvas implements Runnable
 {
@@ -46,7 +47,8 @@ public class Game extends Canvas implements Runnable
 		frame = new JFrame();
 		key = new Keyboard();
 		level = Level.spawn;
-		player = new Player( 6 * 16, 4 * 16, key );
+		TileCoordinate playerSpawn = new TileCoordinate( 19, 62 );
+		player = new Player( playerSpawn.x(), playerSpawn.y(), key );
 		
 		addKeyListener( key );
 	}
