@@ -20,6 +20,7 @@ public class Level
 	public Level( String path )
 	{
 		loadLevel( path );
+		generateLevel();
 	}
 	
 	protected void generateLevel()
@@ -57,10 +58,13 @@ public class Level
 			{
 				// getTile( x, y ).render( x, y, screen );
 				
-				if ( x < 0 || y < 0 || x >= width || y >= height )
+				if ( x + y * 16 < 0 || x + y * 16 >= 256 )
+				{
 					Tile.voidTile.render( x, y, screen );
-				else
-					tiles[ x + y * 16 ].render( x, y, screen );
+					continue;
+				}
+				
+				tiles[ x + y * 16 ].render( x, y, screen );
 			}
 		}
 	}
