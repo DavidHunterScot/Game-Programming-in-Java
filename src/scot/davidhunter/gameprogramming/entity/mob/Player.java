@@ -3,6 +3,7 @@ package scot.davidhunter.gameprogramming.entity.mob;
 import scot.davidhunter.gameprogramming.graphics.Screen;
 import scot.davidhunter.gameprogramming.graphics.Sprite;
 import scot.davidhunter.gameprogramming.input.Keyboard;
+import scot.davidhunter.gameprogramming.input.Mouse;
 
 public class Player extends Mob
 {
@@ -50,6 +51,20 @@ public class Player extends Mob
 		else
 		{
 			walking = false;
+		}
+		
+		updateShooting();
+	}
+	
+	private void updateShooting()
+	{
+		if ( Mouse.getButton() == 1 )
+		{
+			double dx = Mouse.getX() - 300 / 2;
+			double dy = Mouse.getY() - 168 / 2;
+			double dir = Math.atan2( dy, dx );
+			
+			shoot( x, y, dir );
 		}
 	}
 	
