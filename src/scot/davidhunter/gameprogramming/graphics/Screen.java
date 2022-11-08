@@ -2,6 +2,7 @@ package scot.davidhunter.gameprogramming.graphics;
 
 import java.util.Random;
 
+import scot.davidhunter.gameprogramming.entity.projectile.Projectile;
 import scot.davidhunter.gameprogramming.level.tile.Tile;
 
 public class Screen
@@ -43,6 +44,11 @@ public class Screen
 		this.renderSprite( xp, yp, tile.sprite );
 	}
 	
+	public void renderProjectile( int xp, int yp, Projectile p )
+	{
+		this.renderSprite( xp, yp, p.getSprite() );
+	}
+	
 	public void renderSprite( int xp, int yp, Sprite sprite )
 	{
 		xp -= xOffset;
@@ -61,7 +67,10 @@ public class Screen
 				if ( xa < 0 )
 					xa = 0;
 				
-				pixels[ xa + ya * width ] = sprite.pixels[ x + y * sprite.SIZE ];
+				int col = sprite.pixels[ x + y * sprite.SIZE ];
+				
+				if ( col != 0xffff00ff )
+					pixels[ xa + ya * width ] = col;
 			}
 		}
 	}
