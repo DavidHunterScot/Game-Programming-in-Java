@@ -1,6 +1,7 @@
 package scot.davidhunter.gameprogramming.entity.mob;
 
 import scot.davidhunter.gameprogramming.Game;
+import scot.davidhunter.gameprogramming.entity.projectile.Projectile;
 import scot.davidhunter.gameprogramming.graphics.Screen;
 import scot.davidhunter.gameprogramming.graphics.Sprite;
 import scot.davidhunter.gameprogramming.input.Keyboard;
@@ -53,7 +54,19 @@ public class Player extends Mob
 			walking = false;
 		}
 		
+		clear();
 		updateShooting();
+	}
+	
+	private void clear()
+	{
+		for ( int i = 0; i < projectiles.size(); i++ )
+		{
+			Projectile p = projectiles.get( i );
+			
+			if ( p.isRemoved() )
+				projectiles.remove( i );
+		}
 	}
 	
 	private void updateShooting()
